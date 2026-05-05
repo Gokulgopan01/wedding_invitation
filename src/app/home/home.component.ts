@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  scrollToSaveTheDate() {
+    const element = document.getElementById('save-the-date');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
