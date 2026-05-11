@@ -1571,6 +1571,7 @@ $cursive: 'Great Vibes', cursive;
         animation-duration: $duration;
         animation-delay: -$delay;
         transform: rotate($rotate);
+        animation-name: petal-fall-#{$i};
 
         @keyframes petal-fall-#{$i} {
           0% {
@@ -1593,8 +1594,6 @@ $cursive: 'Great Vibes', cursive;
             opacity: 0;
           }
         }
-
-        animation-name: petal-fall-#{$i};
       }
     }
   }
