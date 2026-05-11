@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:list";
+
 $cream: #fffafa;
 $white: #ffffff;
 
@@ -13,19 +16,34 @@ $soft-pink: #f7eeee;
 $deep-pink: #7a4f4f;
 $tan: #A67C52;
 $muted-tan: #8A6F58;
+$primary-pink: #d96c8a;
 
 $serif: 'Playfair Display', serif;
 $sans: 'Inter', sans-serif;
 $cursive: 'Great Vibes', cursive;
 
 .invitation-container {
-  background-color: $cream;
+  background-color: $soft-pink;
+  background: linear-gradient(135deg, #fffafa 0%, #fdf2f2 100%);
   color: $brown;
   font-family: $sans;
   overflow-x: hidden;
   position: relative;
   margin: 0;
   padding: 0;
+}
+
+.paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: multiply;
 }
 
 .paper-texture {
@@ -141,20 +159,20 @@ $cursive: 'Great Vibes', cursive;
       .ampersand {
         font-family: $cursive;
         font-size: 2.8rem;
-        color: $tan;
+        color: $tan ;
         display: block;
         margin: 0.5rem 0;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba($deep-pink, 0.3);
       }
     }
 
     .invite-section {
       .heart {
-        color: $tan;
+        color: $primary-pink;
         font-size: 1.2rem;
         display: block;
         margin-bottom: 0.8rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba($deep-pink, 0.3);
       }
 
       .invite-text {
@@ -415,13 +433,13 @@ $cursive: 'Great Vibes', cursive;
     }
 
     &.primary {
-      border: 2px solid $gold;
+      border: 2px solid $primary-pink;
       transform: scale(1.08);
       z-index: 5;
-      box-shadow: 0 15px 35px rgba($gold, 0.15);
+      box-shadow: 0 15px 35px rgba($primary-pink, 0.15);
 
       .card-info .value {
-        color: $gold;
+        color: $primary-pink;
         font-size: 2.2rem;
       }
 
@@ -496,15 +514,15 @@ $cursive: 'Great Vibes', cursive;
     margin-top: 1rem;
 
     .timer-pill {
-      background: linear-gradient(to bottom, #fcf8f3 0%, #f7eee4 100%);
+      background: linear-gradient(to bottom, #fffafa 0%, #fdeaea 100%);
       border-radius: 40px;
       padding: 2rem 1.5rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
       position: relative;
-      box-shadow: inset 0 2px 10px rgba($white, 0.5), 0 5px 20px rgba($brown, 0.05);
-      border: 1px solid rgba($gold, 0.15);
+      box-shadow: inset 0 2px 10px rgba($white, 0.5), 0 5px 20px rgba($primary-pink, 0.05);
+      border: 1px solid rgba($primary-pink, 0.15);
 
       @media (max-width: 400px) {
         padding: 1.5rem 1rem;
@@ -810,8 +828,22 @@ $cursive: 'Great Vibes', cursive;
 .our-story-section {
   padding: 1rem 0 4rem;
   margin-top: 5rem;
-  background-color: $cream;
+  background: linear-gradient(to bottom, #fffafa 0%, #fdf2f2 50%, #fffafa 100%);
+  position: relative;
   overflow: hidden;
+
+  // Refined floral decoration (lovable theme)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10,10 Q30,40 10,70' fill='none' stroke='%23f48b8b' stroke-width='0.5' opacity='0.2'/%3E%3Cpath d='M90,20 Q70,50 90,80' fill='none' stroke='%23f48b8b' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
+    z-index: 0;
+    pointer-events: none;
+  }
 
   .story-content-header {
     padding: 0 1.5rem;
@@ -833,7 +865,7 @@ $cursive: 'Great Vibes', cursive;
 
       .story-title {
         font-family: $serif;
-        font-size: 2.8rem;
+        font-size: 3.2rem;
         color: $brown;
         margin: 0.5rem 0;
         line-height: 1;
@@ -842,20 +874,24 @@ $cursive: 'Great Vibes', cursive;
           font-family: $cursive;
           color: $gold;
           font-weight: 400;
+          font-size: 4rem;
+          display: block;
+          margin-top: -0.5rem;
         }
       }
 
       .official-pill {
-        background: #efe8e0;
-        padding: 0.4rem 1.2rem;
+        background: #fdeaea;
+        padding: 0.5rem 1.2rem;
         border-radius: 30px;
         font-size: 0.7rem;
         letter-spacing: 2px;
-        color: $muted-tan;
+        color: $gold;
         display: inline-flex;
         align-items: center;
         gap: 0.6rem;
         margin: 0.8rem 0;
+        border: 1px solid rgba($gold, 0.2);
 
         .side-heart {
           font-size: 0.8rem;
@@ -1141,7 +1177,7 @@ $cursive: 'Great Vibes', cursive;
   }
 }
 
-// Confetti Success Burst
+// Confetti Success Burst (Loves & Roses)
 .confetti-wrapper {
   position: absolute;
   top: 50%;
@@ -1153,49 +1189,314 @@ $cursive: 'Great Vibes', cursive;
 
   .confetti {
     position: absolute;
-    width: 8px;
-    height: 8px;
     opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @for $i from 1 through 15 {
       &:nth-child(#{$i}) {
         $colors: (
           $gold,
           #ff69b4,
-          #00ced1,
-          #9370db,
-          #ffa500,
-          #ff4500,
-          #32cd32
+          #ff1493,
+          #ffb6c1,
+          #ffa500
         );
-      background-color: nth($colors, random(length($colors)));
-      $angle: (
-        random(360)) * 1deg;
-      $duration: (
-        random(800) + 800) * 1ms;
-      $delay: (
-        random(100)) * 1ms;
+        $color: list.nth($colors, math.random(list.length($colors)));
+        $duration: (math.random(1000) + 1200) * 1ms;
+        $delay: (math.random(200)) * 1ms;
 
-      animation: confetti-burst-#{$i} $duration $delay ease-out forwards;
+        animation: confetti-burst-#{$i} $duration $delay ease-out forwards;
 
-      @keyframes confetti-burst-#{$i} {
-        0% {
-          transform: translate(0, 0) rotate(0deg) scale(1
-          );
-        opacity: 1;
+        &::before {
+          content: if($i % 3 == 0, '❤', if($i % 3 == 1, '🌹', '✨'));
+          font-size: math.random(10) + 10px;
+          color: $color;
+          filter: drop-shadow(0 2px 4px rgba($color, 0.3));
+        }
+
+        @keyframes confetti-burst-#{$i} {
+          0% {
+            transform: translate(0, 0) rotate(0deg) scale(0);
+            opacity: 0;
+          }
+
+          20% {
+            opacity: 1;
+            transform: translate(0, 0) rotate(0deg) scale(1.2);
+          }
+
+          100% {
+            $x: (math.random(300) - 150) * 1px;
+            $y: (math.random(300) - 250) * 1px;
+            transform: translate($x, $y) rotate(math.random(720) * 1deg) scale(0.5);
+            opacity: 0;
+          }
+        }
       }
-
-      100% {
-        $x: (
-          random(200) - 100) * 1px;
-        $y: (
-          random(200) - 150) * 1px;
-        transform: translate($x, $y) rotate(random(720) * 1deg) scale(0
-        );
-      opacity: 0;
     }
   }
 }
+
+// Celebrations Section
+.celebrations-section {
+  padding: 4rem 1.5rem;
+  background-color: $cream;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+
+  .section-header {
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+
+    .section-title {
+      font-family: $serif;
+      font-size: 2.2rem;
+      color: $brown;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .sacred-subtitle {
+      font-family: $cursive;
+      font-size: 2.8rem;
+      color: $primary-pink;
+      margin: 0.5rem 0;
+      background: linear-gradient(to right, $deep-pink, $primary-pink, $deep-pink);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .celebration-card-container {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+
+    .event-day-info {
+      font-family: $sans;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: $muted-tan;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .event-card {
+      position: relative;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba($brown, 0.2);
+      aspect-ratio: 9/16;
+      max-height: 650px;
+      border: 4px solid $white;
+
+      .event-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .event-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, 
+          rgba(0,0,0,0.4) 0%, 
+          transparent 30%, 
+          transparent 60%, 
+          rgba(0,0,0,0.8) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 3.5rem 2rem;
+        color: $white;
+
+        .event-content {
+          margin-top: 1rem;
+          text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+
+          .event-title-cursive {
+            font-family: $cursive;
+            font-size: 4.5rem;
+            margin: 0;
+            color: $white;
+            line-height: 1;
+          }
+
+          .event-date-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-family: $serif;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+
+            .date-big {
+              font-size: 2.5rem;
+              font-weight: 700;
+              padding: 0 0.8rem;
+              position: relative;
+              
+              &::before, &::after {
+                content: '|';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 300;
+                opacity: 0.5;
+                font-size: 1.5rem;
+              }
+              &::before { left: -5px; }
+              &::after { right: -5px; }
+            }
+
+            .day, .month-year {
+              text-transform: capitalize;
+            }
+          }
+
+          .event-time {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            font-weight: 500;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+          }
+
+          .event-divider-line {
+            width: 40px;
+            height: 1px;
+            background: rgba($white, 0.4);
+            margin: 1.2rem auto;
+          }
+
+          .event-theme {
+            font-family: $serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.95;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
 }
-}
+
+// Location Section
+.location-section {
+  padding: 2rem 1rem 4rem;
+  background: linear-gradient(to bottom, #fffafa 0%, #fdf2f2 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .location-card {
+    background: $white;
+    border-radius: 30px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 15px 40px rgba($deep-pink, 0.08);
+    max-width: 380px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba($primary-pink, 0.1);
+
+    @media (max-width: 400px) {
+      padding: 1.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .location-title {
+      font-family: $serif;
+      font-size: 1.8rem;
+      color: $brown;
+      margin: 0 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+
+      @media (max-width: 380px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .location-subtitle {
+      font-family: $cursive;
+      font-size: 2.2rem;
+      color: $primary-pink;
+      margin: 0 0 1rem;
+
+      @media (max-width: 380px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    .ornament.small {
+      margin-bottom: 1.5rem;
+    }
+
+    .address-details {
+      margin-bottom: 1.5rem;
+      
+      p {
+        font-family: $serif;
+        font-size: 1rem;
+        color: $muted-tan;
+        margin: 0.2rem 0;
+        line-height: 1.4;
+      }
+    }
+
+    .view-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: #5ba367;
+      color: $white;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-family: $sans;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      box-shadow: 0 8px 15px rgba(91, 163, 103, 0.2);
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      .icon {
+        font-size: 0.9rem;
+      }
+    }
+
+    .map-container {
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba($gold, 0.1);
+      height: 180px;
+
+      @media (max-width: 380px) {
+        height: 150px;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }

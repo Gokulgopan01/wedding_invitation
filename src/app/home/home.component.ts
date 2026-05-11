@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   calculateCountdown() {
-    const targetDate = new Date('2026-06-12T00:00:00');
+    const targetDate = new Date('2026-07-12T00:00:00');
     const now = new Date();
     const diff = targetDate.getTime() - now.getTime();
 
@@ -163,16 +163,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   fillCanvas(canvasObj: any) {
     const { el, ctx } = canvasObj;
     const gradient = ctx.createLinearGradient(0, 0, el.width, el.height);
-    gradient.addColorStop(0, '#D4AF37');
-    gradient.addColorStop(0.5, '#F9E4B7');
-    gradient.addColorStop(1, '#D4AF37');
+    gradient.addColorStop(0, '#f48b8b');
+    gradient.addColorStop(0.5, '#fcebeb');
+    gradient.addColorStop(1, '#f48b8b');
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, el.width, el.height);
 
-    ctx.fillStyle = '#8B4513';
-    ctx.font = '600 12px "Inter", sans-serif';
+    ctx.fillStyle = '#8d5e5e';
+    ctx.font = '700 12px "Inter", sans-serif';
     ctx.textAlign = 'center';
+    ctx.letterSpacing = '2px';
     ctx.fillText('SCRATCH', el.width / 2, el.height / 2 + 5);
   }
 
