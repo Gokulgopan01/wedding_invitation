@@ -1,10 +1,20 @@
-$cream: #fffdfa;
-$brown: #4a3728;
-$tan: #d4a373;
-$muted-tan: #a68a64;
+// Premium Warm Luxury Palette
+$cream: #f8f6f2; // softer luxury ivory
 $white: #ffffff;
-$soft-pink: #fdf2f2;
-$deep-pink: #9d5c5c;
+
+$brown: #2f241d; // rich espresso brown
+$deep-brown: #1e1712; // dark elegant headings
+$charcoal: #3b312b; // readable muted dark
+
+$gold: #b8894f; // antique gold
+$muted-gold: #8f6d46; // darker muted gold
+$soft-gold: #d2b48c; // accent only
+
+$soft-pink: #f7eeee;
+$deep-pink: #7a4f4f;
+$tan: #A67C52;
+$muted-tan: #8A6F58;
+
 $serif: 'Playfair Display', serif;
 $sans: 'Inter', sans-serif;
 $cursive: 'Great Vibes', cursive;
@@ -278,90 +288,308 @@ $cursive: 'Great Vibes', cursive;
   }
 }
 
-// Save the Date Section (Simplified)
+// Save the Date Section
 .save-the-date-section {
-  min-height: 100vh;
-  background-image: url('/assets/images/home_image.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 2rem 1.5rem 0;
+  background-color: $cream;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 3rem 1.5rem;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba($cream, 0.2); // Soft overlay to help the box stand out
-  }
-}
-
-.section-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.simple-white-box {
-  background: $white;
-  padding: 4rem 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
-  max-width: 400px;
-  margin: 0 auto;
-  border-radius: 2px; // Very slight rounding for premium look
+  position: relative;
 
-  .save-title {
-    font-family: $serif;
-    font-size: 2.2rem;
-    color: $brown;
-    letter-spacing: 6px;
-    margin-bottom: 2.5rem;
-  }
-}
+  .section-title-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.date-display {
-  margin: 2rem 0;
+    .save-title-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: -1rem;
 
-  .month {
-    font-size: 0.8rem;
-    letter-spacing: 5px;
-    color: $muted-tan;
-    margin-bottom: 1rem;
-  }
+      .save-title {
+        font-family: $cursive;
+        font-size: 8rem;
+        color: $gold;
+        margin: 0;
+        line-height: 1;
+        font-weight: 400;
 
-  .day-wrapper {
-    margin: 1.5rem 0;
+        @media (max-width: 400px) {
+          font-size: 6rem;
+        }
+      }
 
-    .day {
+      .leaf-decoration-right {
+        position: absolute;
+        top: 20%;
+        right: -3rem;
+        width: 60px;
+        height: 60px;
+        color: $soft-gold;
+        opacity: 0.6;
+
+        .small-heart {
+          position: absolute;
+          top: -10px;
+          right: 10px;
+          font-size: 0.8rem;
+        }
+
+        .leaf-svg {
+          width: 100%;
+          height: 100%;
+          transform: rotate(-15deg);
+        }
+      }
+    }
+
+    .the-date-title {
       font-family: $serif;
-      font-size: 4rem;
+      font-size: 1.8rem;
+      letter-spacing: 8px;
       color: $brown;
-      line-height: 1;
+      margin: 0 0 1.5rem 0;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      @media (max-width: 400px) {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+      }
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 150px;
+      opacity: 0.4;
+
+      .line {
+        flex: 1;
+        height: 1px;
+        background: $gold;
+      }
+
+      .symbol {
+        color: $gold;
+        font-size: 1.2rem;
+      }
     }
   }
 
-  .year {
-    font-size: 1rem;
-    letter-spacing: 6px;
-    color: $muted-tan;
+  .scratch-cards-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 3rem;
+    padding: 1rem 0.5rem;
+
+    @media (max-width: 380px) {
+      gap: 0.4rem;
+    }
+  }
+
+  .scratch-card {
+    position: relative;
+    flex: 1;
+    max-width: 120px;
+    height: 140px;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba($brown, 0.05);
+    overflow: hidden;
+    border: 1px solid rgba($gold, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 400px) {
+      height: 120px;
+    }
+
+    &.primary {
+      border: 2px solid $gold;
+      transform: scale(1.08);
+      z-index: 5;
+      box-shadow: 0 15px 35px rgba($gold, 0.15);
+
+      .card-info .value {
+        color: $gold;
+        font-size: 2.2rem;
+      }
+
+      .card-heart-bottom {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $gold;
+        background: $white;
+        padding: 2px 8px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+      }
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+
+      .label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+        color: $muted-tan;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .value {
+        font-family: $serif;
+        font-size: 1.3rem;
+        color: $brown;
+        font-weight: 800;
+        line-height: 1;
+
+        @media (max-width: 400px) {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .card-leaf-bottom {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 30px;
+      height: 30px;
+      opacity: 0.1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,90 Q30,70 50,50 T90,10' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      cursor: crosshair;
+      touch-action: none;
+    }
+  }
+
+  .timer-section-wrapper {
+    width: 100%;
+    max-width: 420px;
+    padding: 0 1rem;
     margin-top: 1rem;
+
+    .timer-pill {
+      background: linear-gradient(to bottom, #fcf8f3 0%, #f7eee4 100%);
+      border-radius: 40px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      box-shadow: inset 0 2px 10px rgba($white, 0.5), 0 5px 20px rgba($brown, 0.05);
+      border: 1px solid rgba($gold, 0.15);
+
+      @media (max-width: 400px) {
+        padding: 1.5rem 1rem;
+      }
+
+      .timer-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+
+        .timer-value {
+          font-family: $serif;
+          font-size: 2.5rem;
+          color: $brown;
+          line-height: 1;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+
+          @media (max-width: 400px) {
+            font-size: 2rem;
+          }
+        }
+
+        .timer-label {
+          font-size: 0.6rem;
+          letter-spacing: 2px;
+          color: $muted-tan;
+          font-weight: 700;
+        }
+      }
+
+      .timer-divider {
+        width: 1px;
+        height: 40px;
+        background: rgba($gold, 0.2);
+      }
+
+      .timer-heart-center {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $gold;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .bottom-instruction {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    .script-instruction {
+      font-family: $cursive;
+      font-size: 1.8rem;
+      color: $muted-tan;
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    .decorative-line {
+      width: 40px;
+      height: 2px;
+      background: $gold;
+      opacity: 0.3;
+    }
   }
 }
 
-.formal-text {
-  font-size: 0.6rem;
-  letter-spacing: 3px;
-  color: $muted-tan;
-  margin-top: 3rem;
-  font-weight: 600;
-  text-transform: uppercase;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes bounce {
@@ -375,31 +603,600 @@ $cursive: 'Great Vibes', cursive;
   }
 
   40% {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
   }
 
   60% {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
   }
 }
 
-// Strict Media Query for Mobile
-@media (min-width: 300px) and (max-width: 480px) {
-  .hero-image-area {
-    flex: 0 0 62%;
+.section-title-wrapper {
+  margin-bottom: 2rem;
+
+  .save-title {
+    font-family: $cursive;
+    font-size: 4rem; // Even bigger
+    color: $brown;
+    margin: 0;
+    line-height: 0.8;
+
+    .big-s {
+      font-size: 8rem; // Massive S
+      color: $gold;
+      display: inline-block;
+      transform: translateY(1.5rem);
+      margin-right: -0.8rem;
+      font-weight: 400;
+      text-shadow: 2px 2px 0px rgba($gold, 0.2);
+    }
+
+    .the-date {
+      font-family: $serif;
+      font-size: 1.2rem;
+      display: block;
+      margin-top: 2rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: $muted-tan;
+      font-weight: 700;
+    }
+  }
+}
+
+.scratch-cards-grid {
+  display: flex;
+  flex-wrap: nowrap; // No wrapping
+  justify-content: center;
+  gap: 0.5rem; // Reduced gap to save space
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 2rem;
+  padding: 0 5px;
+
+  @media (max-width: 480px) {
+    gap: 0.4rem;
+  }
+}
+
+.scratch-card {
+  position: relative;
+  flex: 0 0 100px; // Fixed width
+  height: 100px;
+  background: $white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba($brown, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba($gold, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 380px) {
+    flex: 0 0 85px;
+    height: 85px;
   }
 
-  .simple-white-box {
-    padding: 3rem 1.5rem;
+  @media (max-width: 330px) {
+    flex: 0 0 75px;
+    height: 75px;
+  }
 
-    .save-title {
-      font-size: 1.8rem;
+  &.primary {
+    border: 2px solid $gold;
+    transform: scale(1.05);
+    z-index: 1;
+
+    .value {
+      color: $gold !important;
+      font-size: 2.2rem !important;
     }
   }
 
-  .date-display {
-    .day {
-      font-size: 3.2rem;
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+
+    .label {
+      font-size: 0.45rem;
+      letter-spacing: 1px;
+      color: $muted-tan;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-family: $serif;
+      font-size: 0.9rem;
+      color: $brown;
+      font-weight: 700;
+      line-height: 1;
     }
   }
+
+  .scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: none;
+    z-index: 2;
+  }
+}
+
+.timer-section {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  background: rgba($gold, 0.05);
+  border-radius: 20px;
+  border: 1px dashed rgba($gold, 0.3);
+  width: 100%;
+  max-width: 400px;
+
+  .timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    align-items: center;
+
+    &.animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+  }
+
+  .timer-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: ':';
+      position: absolute;
+      right: -0.4rem;
+      top: 20%;
+      font-family: $serif;
+      font-size: 1.5rem;
+      color: rgba($gold, 0.3);
+    }
+
+    .timer-value {
+      font-family: $serif;
+      font-size: 2.2rem;
+      color: $brown;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+
+      @media (max-width: 380px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    .timer-label {
+      font-size: 0.55rem;
+      letter-spacing: 1px;
+      color: $gold;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.countdown-wrapper {
+  margin-top: 2rem;
+
+  .countdown-instruction {
+    font-size: 0.75rem;
+    color: $muted-tan;
+    font-style: italic;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+
+  .marriage-year {
+    font-family: $serif;
+    font-size: 1.2rem;
+    color: rgba($brown, 0.1);
+    letter-spacing: 15px;
+    margin-top: 2rem;
+  }
+}
+
+// Our Story Section
+.our-story-section {
+  padding: 1rem 0 4rem;
+  margin-top: 5rem;
+  background-color: $cream;
+  overflow: hidden;
+
+  .story-content-header {
+    padding: 0 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    .story-header {
+      max-width: 350px;
+      animation: storyTextFade 0.5s ease-out forwards;
+
+      .journey-subtitle {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        color: $muted-tan;
+        margin-bottom: 0.5rem;
+      }
+
+      .story-title {
+        font-family: $serif;
+        font-size: 2.8rem;
+        color: $brown;
+        margin: 0.5rem 0;
+        line-height: 1;
+
+        span {
+          font-family: $cursive;
+          color: $gold;
+          font-weight: 400;
+        }
+      }
+
+      .official-pill {
+        background: #efe8e0;
+        padding: 0.4rem 1.2rem;
+        border-radius: 30px;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        color: $muted-tan;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin: 0.8rem 0;
+
+        .side-heart {
+          font-size: 0.8rem;
+          opacity: 0.6;
+        }
+      }
+
+      .story-quote {
+        font-family: $serif;
+        font-size: 1rem;
+        color: $muted-tan;
+        line-height: 1.5;
+        font-style: italic;
+
+        p {
+          margin: 0.2rem 0;
+        }
+
+        .emphasized {
+          color: $gold;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .story-carousel-container {
+    position: relative;
+    width: 100%;
+
+    .story-carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; // Hide scrollbar for Firefox
+      -ms-overflow-style: none; // Hide scrollbar for IE/Edge
+      padding: 2rem 0;
+
+      &::-webkit-scrollbar {
+        display: none; // Hide scrollbar for Chrome/Safari
+      }
+    }
+
+    .photo-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+
+      .polaroid-frame {
+        background: $white;
+        padding: 1rem;
+        padding-bottom: 3rem;
+        box-shadow: 0 15px 40px rgba($brown, 0.1);
+        width: 100%;
+        max-width: 280px;
+        position: relative;
+        border-radius: 2px;
+        transition: transform 0.5s ease;
+
+        .tape {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-2deg);
+          width: 70px;
+          height: 25px;
+          background: rgba($tan, 0.15);
+          backdrop-filter: blur(1px);
+          z-index: 2;
+        }
+
+        img {
+          width: 100%;
+          aspect-ratio: 4/5;
+          object-fit: cover;
+          display: block;
+        }
+
+        .polaroid-caption {
+          font-family: $cursive;
+          font-size: 1.3rem;
+          color: $muted-tan;
+          margin: 1.2rem 0 0;
+          text-align: center;
+        }
+
+        .polaroid-heart {
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+          color: $gold;
+          font-size: 1.1rem;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba($gold, 0.2);
+      transition: all 0.3s ease;
+
+      &.active {
+        background: $gold;
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  .ornament.small {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100px;
+    margin: 0 auto;
+
+    .line {
+      flex: 1;
+      height: 1px;
+      background: $gold;
+    }
+
+    .heart-symbol {
+      color: $gold;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+@keyframes storyTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Falling Feathers Animation
+.falling-feathers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+
+  .feather {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: rgba($white, 0.6);
+    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba($white, 0.2);
+    animation: feather-fall 8s linear infinite;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background: rgba($gold, 0.1);
+      left: 50%;
+      top: 0;
+    }
+
+    &:nth-child(1) {
+      left: 15%;
+      animation-delay: -1s;
+      animation-duration: 7s;
+      width: 12px;
+      height: 12px;
+    }
+
+    &:nth-child(2) {
+      left: 35%;
+      animation-delay: -3s;
+      animation-duration: 9s;
+      width: 18px;
+      height: 18px;
+    }
+
+    &:nth-child(3) {
+      left: 55%;
+      animation-delay: -5s;
+      animation-duration: 6s;
+      width: 14px;
+      height: 14px;
+    }
+
+    &:nth-child(4) {
+      left: 75%;
+      animation-delay: -2s;
+      animation-duration: 8s;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:nth-child(5) {
+      left: 25%;
+      animation-delay: -4s;
+      animation-duration: 10s;
+      width: 10px;
+      height: 10px;
+    }
+
+    &:nth-child(6) {
+      left: 45%;
+      animation-delay: -1.5s;
+      animation-duration: 7.5s;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:nth-child(7) {
+      left: 65%;
+      animation-delay: -3.5s;
+      animation-duration: 8.5s;
+      width: 13px;
+      height: 13px;
+    }
+
+    &:nth-child(8) {
+      left: 85%;
+      animation-delay: -0.5s;
+      animation-duration: 6.5s;
+      width: 19px;
+      height: 19px;
+    }
+  }
+}
+
+@keyframes feather-fall {
+  0% {
+    top: -5%;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  25% {
+    transform: translateX(30px) rotate(45deg);
+  }
+
+  50% {
+    transform: translateX(-30px) rotate(-45deg);
+  }
+
+  75% {
+    transform: translateX(20px) rotate(22deg);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 105%;
+    transform: translateX(0) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+// Confetti Success Burst
+.confetti-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: 100;
+  pointer-events: none;
+
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    opacity: 0;
+
+    @for $i from 1 through 15 {
+      &:nth-child(#{$i}) {
+        $colors: (
+          $gold,
+          #ff69b4,
+          #00ced1,
+          #9370db,
+          #ffa500,
+          #ff4500,
+          #32cd32
+        );
+      background-color: nth($colors, random(length($colors)));
+      $angle: (
+        random(360)) * 1deg;
+      $duration: (
+        random(800) + 800) * 1ms;
+      $delay: (
+        random(100)) * 1ms;
+
+      animation: confetti-burst-#{$i} $duration $delay ease-out forwards;
+
+      @keyframes confetti-burst-#{$i} {
+        0% {
+          transform: translate(0, 0) rotate(0deg) scale(1
+          );
+        opacity: 1;
+      }
+
+      100% {
+        $x: (
+          random(200) - 100) * 1px;
+        $y: (
+          random(200) - 150) * 1px;
+        transform: translate($x, $y) rotate(random(720) * 1deg) scale(0
+        );
+      opacity: 0;
+    }
+  }
+}
+}
+}
 }

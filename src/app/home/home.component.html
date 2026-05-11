@@ -3,6 +3,9 @@
 
   <!-- Main Viewport Frame -->
   <section class="main-frame">
+    <div class="falling-feathers">
+      <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+    </div>
     <!-- Hero Image Area -->
     <div class="hero-image-area">
       <img src="assets/images/home_1.jpeg" alt="Vignesh and Devika" class="main-photo">
@@ -76,24 +79,121 @@
   </section>
 
   <!-- Save the Date Section -->
-  <section class="save-the-date-section" id="save-the-date">
-    <div class="section-content">
-      <div class="simple-white-box">
-        <header class="card-header">
-          <h2 class="save-title">SAVE THE DATE</h2>
-        </header>
-
-        <div class="date-display">
-          <p class="month">MAY</p>
-          <div class="day-wrapper">
-            <span class="day">28</span>
-          </div>
-          <p class="year">2026</p>
+  <section id="save-the-date" class="save-the-date-section">
+    <div class="falling-feathers">
+      <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+    </div>
+    <div class="section-title-wrapper">
+      <div class="save-title-container">
+        <h2 class="save-title">Save</h2>
+        <div class="leaf-decoration-right">
+          <span class="small-heart">♡</span>
+          <svg class="leaf-svg" viewBox="0 0 100 100">
+            <path d="M10,90 Q30,70 50,50 T90,10" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M50,50 Q70,30 90,10" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
         </div>
+      </div>
+      <h3 class="the-date-title">THE DATE</h3>
+      <div class="ornament">
+        <span class="line"></span>
+        <span class="symbol">∞</span>
+        <span class="line"></span>
+      </div>
+    </div>
 
-        <footer class="card-footer">
-          <p class="formal-text">FORMAL INVITATION TO FOLLOW</p>
-        </footer>
+    <div class="scratch-cards-grid">
+      <div class="scratch-card" *ngFor="let i of [0,1,2]" [class.primary]="i === 1">
+        <div class="card-info">
+          <span class="label">{{ i === 0 ? 'MONTH' : i === 1 ? 'DATE' : 'DAY' }}</span>
+          <span class="value">{{ i === 0 ? 'MAY' : i === 1 ? '11' : 'MONDAY' }}</span>
+        </div>
+        <div class="card-heart-bottom" *ngIf="i === 1">❤</div>
+        <div class="card-leaf-bottom" *ngIf="i !== 1"></div>
+        <canvas #scratchCanvas class="scratch-canvas"></canvas>
+
+        <!-- Burst from each card -->
+        <div class="confetti-wrapper" *ngIf="allScratched">
+          <div class="confetti" *ngFor="let c of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timer-section-wrapper" *ngIf="allScratched">
+      <div class="timer-pill animate-fade-in">
+        <div class="timer-unit">
+          <span class="timer-value">{{ days }}</span>
+          <span class="timer-label">DAYS</span>
+        </div>
+        <div class="timer-divider"></div>
+        <div class="timer-unit">
+          <span class="timer-value">{{ hours | number:'2.0' }}</span>
+          <span class="timer-label">HOUR</span>
+        </div>
+        <div class="timer-divider"></div>
+        <div class="timer-unit">
+          <span class="timer-value">{{ minutes | number:'2.0' }}</span>
+          <span class="timer-label">MINS</span>
+        </div>
+        <div class="timer-divider"></div>
+        <div class="timer-unit">
+          <span class="timer-value">{{ seconds | number:'2.0' }}</span>
+          <span class="timer-label">SECS</span>
+        </div>
+        <div class="timer-heart-center">❤</div>
+      </div>
+    </div>
+
+    <div class="bottom-instruction">
+      <p class="script-instruction">Scratch above to reveal the date</p>
+      <div class="decorative-line"></div>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section id="our-story" class="our-story-section">
+    <div class="falling-feathers">
+      <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+    </div>
+    <!-- Static Header that updates -->
+    <div class="story-content-header">
+      <div class="story-header" *ngIf="storyStages[activeStoryIndex] as activeStage">
+        <p class="journey-subtitle">{{ activeStage.subtitle }}</p>
+        <div class="ornament small">
+          <span class="line"></span>
+          <span class="heart-symbol">❤</span>
+          <span class="line"></span>
+        </div>
+        <h2 class="story-title" [innerHTML]="activeStage.title"></h2>
+        <div class="official-pill">
+          <span class="side-heart">♡</span>
+          {{ activeStage.pill }}
+          <span class="side-heart">♡</span>
+        </div>
+        <div class="story-quote">
+          <p>{{ activeStage.quote }}</p>
+          <p class="emphasized">{{ activeStage.quoteEmphasized }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal Swipeable Carousel -->
+    <div class="story-carousel-container">
+      <div class="story-carousel-track">
+        <div class="photo-slide" *ngFor="let stage of storyStages; let i = index" [attr.data-index]="i">
+          <div class="polaroid-frame">
+            <div class="tape"></div>
+            <img [src]="stage.image" [alt]="'Story ' + (i + 1)">
+            <p class="polaroid-caption">{{ stage.caption }}</p>
+            <span class="polaroid-heart">♡</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <span *ngFor="let dot of storyStages; let i = index" class="dot" [class.active]="i === activeStoryIndex">
+        </span>
       </div>
     </div>
   </section>
