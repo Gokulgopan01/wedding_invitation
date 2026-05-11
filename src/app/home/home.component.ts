@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   seconds: number = 0;
   private timerInterval: any;
   private canvases: { el: HTMLCanvasElement, ctx: CanvasRenderingContext2D, isDrawing: boolean }[] = [];
+  private scrollRevealObserver: IntersectionObserver | null = null;
 
   storyStages = [
     {
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       setTimeout(() => {
         this.initAllCanvases();
         this.initScrollObserver();
+        this.initScrollReveal();
       }, 500);
     }
   }
@@ -97,9 +99,36 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     slides.forEach(slide => observer.observe(slide));
   }
 
+  private initScrollReveal() {
+    const revealClasses = [
+      '.reveal', '.reveal-left', '.reveal-right',
+      '.reveal-bounce', '.reveal-pop'
+    ];
+    const selector = revealClasses.join(', ');
+    const elements = document.querySelectorAll(selector);
+
+    this.scrollRevealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Unobserve after first reveal so animation fires only once
+            this.scrollRevealObserver?.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    elements.forEach(el => this.scrollRevealObserver!.observe(el));
+  }
+
   ngOnDestroy() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
+    }
+    if (this.scrollRevealObserver) {
+      this.scrollRevealObserver.disconnect();
     }
   }
 

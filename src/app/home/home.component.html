@@ -45,13 +45,13 @@
 
     <!-- Content Area below Image -->
     <div class="frame-content">
-      <div class="quote-area">
+      <div class="quote-area reveal">
         <p class="quote-text">
           "Two hearts, one love, a lifetime together."
         </p>
       </div>
 
-      <div class="parents-row">
+      <div class="parents-row reveal delay-1">
         <div class="parent-item">
           <p class="blessing">WITH BLESSINGS OF</p>
           <h3 class="name">Mr. & Mrs. Gopakumar</h3>
@@ -83,7 +83,7 @@
     <div class="falling-feathers">
       <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
     </div>
-    <div class="section-title-wrapper">
+    <div class="section-title-wrapper reveal">
       <div class="save-title-container">
         <h2 class="save-title">Save</h2>
         <div class="leaf-decoration-right">
@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <div class="scratch-cards-grid">
+    <div class="scratch-cards-grid reveal-bounce delay-2">
       <div class="scratch-card" *ngFor="let i of [0,1,2]" [class.primary]="i === 1">
         <div class="card-info">
           <span class="label">{{ i === 0 ? 'MONTH' : i === 1 ? 'DATE' : 'DAY' }}</span>
@@ -144,7 +144,7 @@
       </div>
     </div>
 
-    <div class="bottom-instruction">
+    <div class="bottom-instruction reveal delay-3">
       <p class="script-instruction">Scratch above to reveal the date</p>
       <div class="decorative-line"></div>
     </div>
@@ -156,7 +156,7 @@
       <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
     </div>
     <!-- Static Header that updates -->
-    <div class="story-content-header">
+    <div class="story-content-header reveal">
       <div class="story-header" *ngIf="storyStages[activeStoryIndex] as activeStage">
         <p class="journey-subtitle">{{ activeStage.subtitle }}</p>
         <div class="ornament small">
@@ -178,7 +178,7 @@
     </div>
 
     <!-- Horizontal Swipeable Carousel -->
-    <div class="story-carousel-container">
+    <div class="story-carousel-container reveal-bounce delay-2">
       <div class="story-carousel-track">
         <div class="photo-slide" *ngFor="let stage of storyStages; let i = index" [attr.data-index]="i">
           <div class="polaroid-frame">
@@ -204,7 +204,7 @@
       <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
     </div>
 
-    <div class="section-header center">
+    <div class="section-header center reveal">
       <h2 class="section-title">The Celebrations</h2>
       <h3 class="sacred-subtitle">Sacred Ceremonies</h3>
       <div class="ornament small">
@@ -214,8 +214,8 @@
       </div>
     </div>
 
-    <div class="celebration-card-container">
-      <p class="event-day-info">Day 1 . 09/07/2026 . Thursday</p>
+    <div class="celebration-card-container reveal-bounce">
+      <p class="event-day-info reveal delay-1">Day 1 . 09/07/2026 . Thursday</p>
 
       <div class="event-card">
         <img src="assets/images/dil_diya.png" alt="Dil Diya" class="event-image">
@@ -242,7 +242,7 @@
         <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
       </div>
 
-      <div class="location-card">
+      <div class="location-card reveal-left">
         <h2 class="location-title">Location</h2>
         <div class="ornament small">
           <span class="line"></span>
@@ -271,8 +271,8 @@
     </section>
 
     <!-- Day 2 Event Card -->
-    <div class="celebration-card-container" style="margin-top: 4rem;">
-      <p class="event-day-info">Day 2 . 11/07/2026 . Friday</p>
+    <div class="celebration-card-container reveal-bounce" style="margin-top: 4rem;">
+      <p class="event-day-info reveal delay-1">Day 2 . 11/07/2026 . Friday</p>
 
       <div class="event-card">
         <img src="assets/images/Reception.png" alt="Reception" class="event-image">
@@ -301,7 +301,7 @@
         <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
       </div>
 
-      <div class="location-card">
+      <div class="location-card reveal-right">
         <h2 class="location-title">Location</h2>
         <div class="ornament small">
           <span class="line"></span>
@@ -329,8 +329,8 @@
       </div>
     </section>
 
-    <div class="celebration-card-container">
-      <p class="event-day-info">Day 3 . 12/07/2026 . Saturday</p>
+    <div class="celebration-card-container reveal-bounce">
+      <p class="event-day-info reveal delay-1">Day 3 . 12/07/2026 . Saturday</p>
       <p class="event-day-info">Muhoortham between 11:00 AM and 11:30 AM</p>
 
       <div class="event-card">

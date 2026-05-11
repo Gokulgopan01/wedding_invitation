@@ -1203,40 +1203,46 @@ $cursive: 'Great Vibes', cursive;
           #ffb6c1,
           #ffa500
         );
-        $color: list.nth($colors, math.random(list.length($colors)));
-        $duration: (math.random(1000) + 1200) * 1ms;
-        $delay: (math.random(200)) * 1ms;
+      $color: list.nth($colors, math.random(list.length($colors)));
+      $duration: (
+        math.random(1000) + 1200) * 1ms;
+      $delay: (
+        math.random(200)) * 1ms;
 
-        animation: confetti-burst-#{$i} $duration $delay ease-out forwards;
+      animation: confetti-burst-#{$i} $duration $delay ease-out forwards;
 
-        &::before {
-          content: if($i % 3 == 0, '❤', if($i % 3 == 1, '🌹', '✨'));
-          font-size: math.random(10) + 10px;
-          color: $color;
-          filter: drop-shadow(0 2px 4px rgba($color, 0.3));
-        }
+      &::before {
+        content: if($i % 3==0, '❤', if($i % 3==1, '🌹', '✨')
+        );
+      font-size: math.random(10) + 10px;
+      color: $color;
+      filter: drop-shadow(0 2px 4px rgba($color, 0.3));
+    }
 
-        @keyframes confetti-burst-#{$i} {
-          0% {
-            transform: translate(0, 0) rotate(0deg) scale(0);
-            opacity: 0;
-          }
-
-          20% {
-            opacity: 1;
-            transform: translate(0, 0) rotate(0deg) scale(1.2);
-          }
-
-          100% {
-            $x: (math.random(300) - 150) * 1px;
-            $y: (math.random(300) - 250) * 1px;
-            transform: translate($x, $y) rotate(math.random(720) * 1deg) scale(0.5);
-            opacity: 0;
-          }
-        }
+    @keyframes confetti-burst-#{$i} {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(0);
+        opacity: 0;
       }
+
+      20% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1.2);
+      }
+
+      100% {
+        $x: (
+          math.random(300) - 150) * 1px;
+        $y: (
+          math.random(300) - 250) * 1px;
+        transform: translate($x, $y) rotate(math.random(720) * 1deg) scale(0.5
+        );
+      opacity: 0;
     }
   }
+}
+}
+}
 }
 
 // Celebrations Section
@@ -1308,11 +1314,11 @@ $cursive: 'Great Vibes', cursive;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, 
-          rgba(0,0,0,0.4) 0%, 
-          transparent 30%, 
-          transparent 60%, 
-          rgba(0,0,0,0.8) 100%);
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            transparent 30%,
+            transparent 60%,
+            rgba(0, 0, 0, 0.8) 100%);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1321,7 +1327,7 @@ $cursive: 'Great Vibes', cursive;
 
         .event-content {
           margin-top: 1rem;
-          text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+          text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
 
           .event-title-cursive {
             font-family: $cursive;
@@ -1345,8 +1351,9 @@ $cursive: 'Great Vibes', cursive;
               font-weight: 700;
               padding: 0 0.8rem;
               position: relative;
-              
-              &::before, &::after {
+
+              &::before,
+              &::after {
                 content: '|';
                 position: absolute;
                 top: 50%;
@@ -1355,11 +1362,18 @@ $cursive: 'Great Vibes', cursive;
                 opacity: 0.5;
                 font-size: 1.5rem;
               }
-              &::before { left: -5px; }
-              &::after { right: -5px; }
+
+              &::before {
+                left: -5px;
+              }
+
+              &::after {
+                right: -5px;
+              }
             }
 
-            .day, .month-year {
+            .day,
+            .month-year {
               text-transform: capitalize;
             }
           }
@@ -1446,7 +1460,7 @@ $cursive: 'Great Vibes', cursive;
 
     .address-details {
       margin-bottom: 1.5rem;
-      
+
       p {
         font-family: $serif;
         font-size: 1rem;
@@ -1498,5 +1512,100 @@ $cursive: 'Great Vibes', cursive;
         height: 100%;
       }
     }
+  }
+}
+
+// =============================================
+// SCROLL-TRIGGERED ANIMATIONS
+// =============================================
+
+// Base state — hidden before scroll
+.reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.97);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  // Stagger delays
+  &.delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  &.delay-2 {
+    transition-delay: 0.2s;
+  }
+
+  &.delay-3 {
+    transition-delay: 0.3s;
+  }
+
+  &.delay-4 {
+    transition-delay: 0.45s;
+  }
+
+  &.delay-5 {
+    transition-delay: 0.6s;
+  }
+}
+
+// Slide from left
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Slide from right
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Bounce in (for cards and special elements)
+.reveal-bounce {
+  opacity: 0;
+  transform: translateY(80px) scale(0.92);
+  transition:
+    opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Pop in (for pills, hearts, small decorations)
+.reveal-pop {
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 }
