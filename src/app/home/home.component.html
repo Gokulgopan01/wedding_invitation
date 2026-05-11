@@ -1,4 +1,4 @@
-<div class="invitation-container">
+﻿<div class="invitation-container">
   <div class="paper-texture"></div>
 
   <!-- Main Viewport Frame -->
@@ -28,7 +28,7 @@
             <h1 class="couple-name">Devika</h1>
           </div>
           <div class="invite-section">
-            <span class="heart">♥</span>
+            <span class="heart">â™¥</span>
             <p class="invite-text">INVITE YOU ALL TO CELEBRATE<br>THEIR WEDDING</p>
           </div>
         </div>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="parent-divider">
-          <span class="dot">♥</span>
+          <span class="dot">â™¥</span>
         </div>
 
         <div class="parent-item">
@@ -71,7 +71,7 @@
 
       <div class="scroll-button-area" (click)="scrollToSaveTheDate()">
         <div class="scroll-btn">
-          <span class="arrow">↓</span>
+          <span class="arrow">â†“</span>
         </div>
         <p class="scroll-label">SCROLL TO EXPLORE</p>
       </div>
@@ -87,7 +87,7 @@
       <div class="save-title-container">
         <h2 class="save-title">Save</h2>
         <div class="leaf-decoration-right">
-          <span class="small-heart">♡</span>
+          <span class="small-heart">â™¡</span>
           <svg class="leaf-svg" viewBox="0 0 100 100">
             <path d="M10,90 Q30,70 50,50 T90,10" fill="none" stroke="currentColor" stroke-width="2" />
             <path d="M50,50 Q70,30 90,10" fill="none" stroke="currentColor" stroke-width="2" />
@@ -97,7 +97,7 @@
       <h3 class="the-date-title">THE DATE</h3>
       <div class="ornament">
         <span class="line"></span>
-        <span class="symbol">∞</span>
+        <span class="symbol">âˆž</span>
         <span class="line"></span>
       </div>
     </div>
@@ -108,7 +108,7 @@
           <span class="label">{{ i === 0 ? 'MONTH' : i === 1 ? 'DATE' : 'DAY' }}</span>
           <span class="value">{{ i === 0 ? 'JULY' : i === 1 ? '12' : 'MONDAY' }}</span>
         </div>
-        <div class="card-heart-bottom" *ngIf="i === 1">❤</div>
+        <div class="card-heart-bottom" *ngIf="i === 1">â¤</div>
         <div class="card-leaf-bottom" *ngIf="i !== 1"></div>
         <canvas #scratchCanvas class="scratch-canvas"></canvas>
 
@@ -140,7 +140,7 @@
           <span class="timer-value">{{ seconds | number:'2.0' }}</span>
           <span class="timer-label">SECS</span>
         </div>
-        <div class="timer-heart-center">❤</div>
+        <div class="timer-heart-center">â¤</div>
       </div>
     </div>
 
@@ -166,9 +166,9 @@
         </div>
         <h2 class="story-title" [innerHTML]="activeStage.title"></h2>
         <div class="official-pill">
-          <span class="side-heart">♡</span>
+          <span class="side-heart">â™¡</span>
           {{ activeStage.pill }}
-          <span class="side-heart">♡</span>
+          <span class="side-heart">â™¡</span>
         </div>
         <div class="story-quote">
           <p>{{ activeStage.quote }}</p>
@@ -185,7 +185,7 @@
             <div class="tape"></div>
             <img [src]="stage.image" [alt]="'Story ' + (i + 1)">
             <p class="polaroid-caption">{{ stage.caption }}</p>
-            <span class="polaroid-heart">♡</span>
+            <span class="polaroid-heart">â™¡</span>
           </div>
         </div>
       </div>
@@ -200,6 +200,10 @@
 
   <!-- Celebrations Section -->
   <section id="celebrations" class="celebrations-section">
+    <!-- Rose Petals -->
+    <div class="rose-petals">
+      <div class="petal" *ngFor="let p of [1,2,3,4,5,6,7,8,9,10,11,12]"></div>
+    </div>
     <div class="falling-feathers">
       <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
     </div>
@@ -257,7 +261,7 @@
 
         <a href="https://maps.google.com/?q=12341+Wheat+Ridge+Dr,+Rancho+Cordova,+CA+95742" target="_blank"
           class="view-map-btn">
-          <span class="icon">📍</span>
+          <span class="icon">ðŸ“</span>
           VIEW ON MAP
         </a>
 
@@ -316,7 +320,7 @@
 
         <a href="https://maps.google.com/?q=12341+Wheat+Ridge+Dr,+Rancho+Cordova,+CA+95742" target="_blank"
           class="view-map-btn">
-          <span class="icon">📍</span>
+          <span class="icon">ðŸ“</span>
           VIEW ON MAP
         </a>
 
@@ -353,3 +357,94 @@
         </div>
       </div>
     </div>
+
+    <section id="location" class="location-section">
+      <div class="falling-feathers">
+        <div class="feather" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+      </div>
+
+      <div class="location-card reveal-right">
+        <h2 class="location-title">Location</h2>
+        <div class="ornament small">
+          <span class="line"></span>
+          <span class="heart-symbol">❤</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="address-details">
+          <p>12341 Wheat Ridge Dr.</p>
+          <p>Rancho Cordova, CA 95742</p>
+        </div>
+
+        <a href="https://maps.google.com/?q=12341+Wheat+Ridge+Dr,+Rancho+Cordova,+CA+95742" target="_blank"
+          class="view-map-btn">
+          <span class="icon">ðŸ“</span>
+          VIEW ON MAP
+        </a>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.567!2d-121.2!3d38.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ae0!2s12341%20Wheat%20Ridge%20Dr%2C%20Rancho%20Cordova%2C%20CA%2095742!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Invitation Message Section -->
+    <section id="invite-message" class="invite-message-section">
+      <div class="paper-bg"></div>
+
+      <!-- Candle Glow Orbs -->
+      <div class="candle-glow left"></div>
+      <div class="candle-glow right"></div>
+
+      <!-- Candle Icons -->
+      <div class="candles-row">
+        <div class="candle">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax"></div>
+        </div>
+        <div class="candle tall">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax"></div>
+        </div>
+        <div class="candle">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="wax"></div>
+        </div>
+      </div>
+
+      <div class="invite-content reveal">
+        <p class="invite-pretext">ï¿½ With Love and Joy ï¿½</p>
+        <h2 class="invite-heading">You Are Invited</h2>
+
+        <div class="invite-message-text reveal delay-2">
+          <p class="line-1">Together with our families,</p>
+          <p class="line-2">we joyfully invite you to share in the</p>
+          <p class="line-3 cursive-big">celebration of our love.</p>
+        </div>
+
+        <div class="invite-quote reveal delay-3">
+          <p>"Your presence will make our celebration complete."</p>
+        </div>
+
+        <div class="invite-names reveal delay-4">
+          <span class="name-cursive">Vignesh</span>
+          <span class="heart-amp">?</span>
+          <span class="name-cursive">Devika</span>
+        </div>
+
+        <div class="invite-date-stamp reveal delay-5">
+          <p>July 2026 &middot; Kerala, India</p>
+        </div>
+      </div>
+
+      <div class="bottom-petals">
+        <div class="petal-b" *ngFor="let p of [1,2,3,4,5,6]"></div>
+      </div>
+    </section>

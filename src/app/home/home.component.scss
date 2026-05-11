@@ -1516,6 +1516,100 @@ $cursive: 'Great Vibes', cursive;
 }
 
 // =============================================
+// ROSE PETALS ANIMATION (Celebrations only)
+// =============================================
+
+.celebrations-section {
+  .rose-petals {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+
+    .petal {
+      position: absolute;
+      top: -30px;
+      border-radius: 150% 0 150% 0;
+      opacity: 0;
+      animation: petal-fall linear infinite;
+
+      // 12 petals with varied size, position, timing
+      @for $i from 1 through 12 {
+        $size: (
+          math.random(14) + 8) * 1px;
+        $left: (
+          math.random(95) + 2) * 1%;
+        $duration: (
+          math.random(8) + 6) * 1s;
+        $delay: (
+          math.random(12)) * 1s;
+        $rotate: math.random(360) * 1deg;
+        $drift: (
+          math.random(80) - 40) * 1px;
+
+        $petal-colors: (
+          #f9a8c9,
+          #f48b8b,
+          #e8b4cb,
+          #fcd0d0,
+          #f07ca0,
+          #fce4ec,
+          #f06292,
+          #f8bbd9
+        );
+      $color: list.nth($petal-colors, math.random(list.length($petal-colors)));
+
+      &:nth-child(#{$i}) {
+        width: $size;
+        height: $size;
+        left: $left;
+        background: $color;
+        animation-duration: $duration;
+        animation-delay: -$delay;
+        transform: rotate($rotate);
+
+        @keyframes petal-fall-#{$i} {
+          0% {
+            top: -5%;
+            transform: rotate($rotate) translateX(0);
+            opacity: 0;
+          }
+
+          5% {
+            opacity: 0.8;
+          }
+
+          90% {
+            opacity: 0.6;
+          }
+
+          100% {
+            top: 105%;
+            transform: rotate($rotate + 360deg) translateX($drift);
+            opacity: 0;
+          }
+        }
+
+        animation-name: petal-fall-#{$i};
+      }
+    }
+  }
+}
+
+// Ensure content stays above petals
+.section-header,
+.celebration-card-container,
+.location-card {
+  position: relative;
+  z-index: 1;
+}
+}
+
+// =============================================
 // SCROLL-TRIGGERED ANIMATIONS
 // =============================================
 
@@ -1607,5 +1701,272 @@ $cursive: 'Great Vibes', cursive;
   &.visible {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+// =============================================
+// INVITATION MESSAGE SECTION
+// =============================================
+.invite-message-section {
+  position: relative;
+  padding: 5rem 2rem 6rem;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #1a0a0a 0%, #2d1010 40%, #1a0808 100%);
+  color: $white;
+
+  // Parchment paper overlay
+  .paper-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/old-mathematics.png");
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  // Warm candle glow orbs
+  .candle-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+
+    &.left {
+      top: 10%;
+      left: -80px;
+      background: radial-gradient(circle, rgba(255, 180, 50, 0.25) 0%, transparent 70%);
+    }
+
+    &.right {
+      bottom: 15%;
+      right: -80px;
+      background: radial-gradient(circle, rgba(255, 150, 80, 0.2) 0%, transparent 70%);
+    }
+  }
+
+  // Candles row
+  .candles-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+
+    .candle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .flame {
+        width: 10px;
+        height: 18px;
+        background: linear-gradient(to top, #ff9d00, #ffdd57, #fff5cc);
+        border-radius: 50% 50% 20% 20%;
+        box-shadow: 0 0 12px 6px rgba(255, 180, 50, 0.5),
+          0 0 25px 10px rgba(255, 120, 30, 0.2);
+        animation: flicker 1.5s ease-in-out infinite alternate;
+        transform-origin: bottom center;
+      }
+
+      .wick {
+        width: 2px;
+        height: 6px;
+        background: #333;
+      }
+
+      .wax {
+        width: 14px;
+        height: 45px;
+        background: linear-gradient(to right, #e8c4c4, #f5e0e0, #e8c4c4);
+        border-radius: 4px 4px 6px 6px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      &.tall .wax {
+        height: 65px;
+      }
+
+      &.tall .flame {
+        width: 12px;
+        height: 22px;
+        animation-delay: 0.3s;
+      }
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+      transform: scaleX(1) scaleY(1) rotate(-1deg);
+      opacity: 1;
+    }
+
+    25% {
+      transform: scaleX(0.9) scaleY(1.1) rotate(1deg);
+      opacity: 0.95;
+    }
+
+    50% {
+      transform: scaleX(1.1) scaleY(0.95) rotate(-2deg);
+      opacity: 1;
+    }
+
+    75% {
+      transform: scaleX(0.95) scaleY(1.05) rotate(1.5deg);
+      opacity: 0.9;
+    }
+
+    100% {
+      transform: scaleX(1) scaleY(1) rotate(-0.5deg);
+      opacity: 1;
+    }
+  }
+
+  // Main invite content
+  .invite-content {
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+    margin: 0 auto;
+
+    .invite-pretext {
+      font-family: $sans;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: rgba($gold, 0.7);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .invite-heading {
+      font-family: $cursive;
+      font-size: 4rem;
+      color: $gold;
+      margin: 0 0 2rem;
+      text-shadow: 0 0 30px rgba($gold, 0.4);
+    }
+
+    .invite-message-text {
+      margin-bottom: 2.5rem;
+
+      p {
+        font-family: $serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba($white, 0.85);
+        margin: 0.2rem 0;
+        font-style: italic;
+      }
+
+      .cursive-big {
+        font-family: $cursive;
+        font-size: 2.2rem;
+        color: $gold;
+        font-style: normal;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .invite-quote {
+      background: rgba($white, 0.05);
+      border: 1px solid rgba($gold, 0.2);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+
+      &::before {
+        content: '"';
+        font-family: $serif;
+        font-size: 5rem;
+        color: rgba($gold, 0.15);
+        position: absolute;
+        top: -20px;
+        left: 15px;
+        line-height: 1;
+      }
+
+      p {
+        font-family: $serif;
+        font-size: 1.15rem;
+        font-style: italic;
+        color: rgba($white, 0.9);
+        margin: 0;
+        line-height: 1.7;
+      }
+    }
+
+    .invite-names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .name-cursive {
+        font-family: $cursive;
+        font-size: 3rem;
+        color: $gold;
+        text-shadow: 0 0 20px rgba($gold, 0.3);
+      }
+
+      .heart-amp {
+        font-size: 1.5rem;
+        color: $primary-pink;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+    }
+
+    .invite-date-stamp {
+      p {
+        font-family: $sans;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        color: rgba($white, 0.5);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // Bottom decorative petals
+  .bottom-petals {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+
+    .petal-b {
+      position: absolute;
+      bottom: 10px;
+      border-radius: 150% 0 150% 0;
+
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          width: math.random(12) + 6px;
+          height: math.random(12) + 6px;
+          left: (($i - 1) * 17 + math.random(10)) * 1%;
+          bottom: math.random(30) + 5px;
+          background: rgba($primary-pink, 0.25);
+          transform: rotate(math.random(360) * 1deg);
+        }
+      }
+    }
+  }
+
+  @keyframes heartbeat {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.25);
+    }
   }
 }
