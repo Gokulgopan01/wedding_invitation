@@ -1,6 +1,17 @@
 <div class="invitation-container">
   <div class="paper-texture"></div>
 
+  <!-- Cinematic Lighting Effects -->
+  <div class="cinematic-lighting">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+    <div class="warm-glow glow-1"></div>
+    <div class="warm-glow glow-2"></div>
+    <div class="blur-light blur-1"></div>
+    <div class="blur-light blur-2"></div>
+  </div>
+
   <!-- Main Viewport Frame -->
   <section class="main-frame">
     <div class="falling-feathers">
@@ -183,7 +194,9 @@
         <div class="photo-slide" *ngFor="let stage of storyStages; let i = index" [attr.data-index]="i">
           <div class="polaroid-frame">
             <div class="tape"></div>
-            <img [src]="stage.image" [alt]="'Story ' + (i + 1)">
+            <div class="img-wrapper">
+              <img [src]="stage.image" [alt]="'Story ' + (i + 1)">
+            </div>
             <p class="polaroid-caption">{{ stage.caption }}</p>
             <span class="polaroid-heart">♡</span>
           </div>
@@ -194,6 +207,19 @@
       <div class="carousel-indicators">
         <span *ngFor="let dot of storyStages; let i = index" class="dot" [class.active]="i === activeStoryIndex">
         </span>
+      </div>
+
+      <!-- Swipe Hint for Mobile -->
+      <div class="swipe-hint visible">
+        <div class="hand-icon">
+          <svg viewBox="0 0 100 100" width="40" height="40">
+            <path d="M50,80 Q60,70 50,60 T50,40" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="50" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M30,50 L70,50" fill="none" stroke="currentColor" stroke-width="3" />
+            <path d="M70,50 L60,45 M70,50 L60,55" fill="none" stroke="currentColor" stroke-width="3" />
+          </svg>
+        </div>
+        <span class="hint-text">Swipe to see our journey</span>
       </div>
     </div>
   </section>
@@ -293,7 +319,7 @@
             </div>
             <p class="event-time">4:30 PM ONWARDS</p>
             <div class="event-divider-line"></div>
-            <p class="event-theme" style="text-decoration: underline;">"Rajasooyam Auditorium/p>
+            <p class="event-theme" style="text-decoration: underline;">Rajasooyam Auditorium</p>
           </div>
         </div>
       </div>
