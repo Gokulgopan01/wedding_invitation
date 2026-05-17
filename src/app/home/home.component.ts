@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList, PLATFORM_ID, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList, PLATFORM_ID, Inject, OnInit, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 
 @Component({
@@ -6,12 +6,14 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('scratchCanvas') scratchCanvases!: QueryList<ElementRef<HTMLCanvasElement>>;
 
   activeStoryIndex: number = 0;
+  showSplash: boolean = true;
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
@@ -75,6 +77,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.initScrollObserver();
         this.initScrollReveal();
       }, 500);
+
+      // Fallback to hide splash screen after 5 seconds in case Lottie fails
+      setTimeout(() => {
+        this.showSplash = false;
+      }, 5000);
     }
   }
 
@@ -130,6 +137,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.scrollRevealObserver) {
       this.scrollRevealObserver.disconnect();
     }
+  }
+
+  onLottieComplete() {
+    this.showSplash = false;
   }
 
   calculateCountdown() {
