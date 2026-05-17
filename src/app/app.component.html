@@ -1,1 +1,8 @@
 <router-outlet />
+
+<div class="audio-control" (click)="toggleMute()">
+  <span class="audio-icon" *ngIf="!isMuted">🔊</span>
+  <span class="audio-icon" *ngIf="isMuted">🔇</span>
+</div>
+
+<audio #audioPlayer src="assets/audio/track.mp3" autoplay loop></audio>

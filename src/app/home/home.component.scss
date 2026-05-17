@@ -74,7 +74,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
 
     .ampersand {
       font-family: $cursive;
-      color: $gold;
+      color: $white;
       font-size: 2.5rem;
     }
   }
@@ -85,6 +85,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -357,7 +358,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
       .ampersand {
         font-family: $cursive;
         font-size: 2.8rem;
-        color: $tan ;
+        color: $white ;
         display: block;
         margin: 0.5rem 0;
         text-shadow: 0 2px 4px rgba($deep-pink, 0.3);
