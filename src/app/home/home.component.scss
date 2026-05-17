@@ -45,11 +45,50 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: #ffebeb; // Light pinkish red
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+
+  .splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .splash-names {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: $serif;
+    font-size: 2rem;
+    color: $brown;
+    opacity: 0;
+    animation: fadeInScale 1s ease-out 1s forwards;
+
+    @media (max-width: 400px) {
+      font-size: 1.5rem;
+    }
+
+    .ampersand {
+      font-family: $cursive;
+      color: $gold;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .cinematic-lighting {
@@ -311,7 +350,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
         @media (max-width: 380px) {
-          font-size: 3.2rem;
+          font-size: 2.8rem;
         }
       }
 
@@ -403,7 +442,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
 
       .name {
         font-family: $serif;
-        font-size: 1rem;
+        font-size: 0.8rem;
         margin: 0.2rem 0;
         color: $brown;
       }

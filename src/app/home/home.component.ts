@@ -76,6 +76,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.initAllCanvases();
         this.initScrollObserver();
         this.initScrollReveal();
+        this.startAutoPlay();
+
+        // Pause on touch/mouse to avoid interrupting user interaction
+        const track = document.querySelector('.story-carousel-track');
+        if (track) {
+          track.addEventListener('touchstart', () => this.stopAutoPlay());
+          track.addEventListener('touchend', () => this.startAutoPlay());
+          track.addEventListener('mouseenter', () => this.stopAutoPlay());
+          track.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
       }, 500);
 
       // Fallback to hide splash screen after 5 seconds in case Lottie fails
@@ -130,6 +140,25 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     elements.forEach(el => this.scrollRevealObserver!.observe(el));
   }
 
+  private autoPlayInterval: any;
+
+  startAutoPlay() {
+    this.autoPlayInterval = setInterval(() => {
+      const track = document.querySelector('.story-carousel-track');
+      if (track) {
+        const nextIndex = (this.activeStoryIndex + 1) % this.storyStages.length;
+        const targetLeft = nextIndex * (track as HTMLElement).offsetWidth;
+        track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      }
+    }, 3000); // Change slide every 3 seconds
+  }
+
+  stopAutoPlay() {
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
+    }
+  }
+
   ngOnDestroy() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
@@ -137,6 +166,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.scrollRevealObserver) {
       this.scrollRevealObserver.disconnect();
     }
+    this.stopAutoPlay();
   }
 
   onLottieComplete() {

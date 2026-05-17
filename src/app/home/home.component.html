@@ -1,12 +1,14 @@
 <div class="splash-screen" *ngIf="showSplash">
-  <lottie-player
-    src="assets/images/wedding_lottie.json"
-    background="transparent"
-    speed="1"
-    style="width: 300px; height: 300px;"
-    autoplay
-    (complete)="onLottieComplete()">
-  </lottie-player>
+  <div class="splash-content">
+    <lottie-player src="assets/images/wedding_lottie.json" background="transparent" speed="1"
+      style="width: min(80vw, 450px); height: min(80vw, 450px);" autoplay (complete)="onLottieComplete()">
+    </lottie-player>
+    <div class="splash-names">
+      <span class="name">Vignesh</span>
+      <span class="ampersand">&</span>
+      <span class="name">Devika</span>
+    </div>
+  </div>
 </div>
 
 <div class="invitation-container">
@@ -86,8 +88,11 @@
 
         <div class="parent-item">
           <p class="blessing">WITH BLESSINGS OF</p>
-          <h3 class="name">Ms. Seena</h3>
-          <p class="parent-sub">(PARENTS OF DEVIKA)</p>
+          <h3 class="name">
+            Mr. Krishnankutty S Nair <br>
+            & Mrs. Sunila Krishnan
+          </h3>
+          <p class="parent-sub">(PARENTS OF Vignesh)</p>
         </div>
       </div>
 
@@ -213,13 +218,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Carousel Indicators -->
-      <div class="carousel-indicators">
-        <span *ngFor="let dot of storyStages; let i = index" class="dot" [class.active]="i === activeStoryIndex">
-        </span>
-      </div>
-
       <!-- Swipe Hint for Mobile -->
       <div class="swipe-hint visible">
         <div class="hand-icon">
@@ -232,6 +230,14 @@
         </div>
         <span class="hint-text">Swipe to see our journey</span>
       </div>
+
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <span *ngFor="let dot of storyStages; let i = index" class="dot" [class.active]="i === activeStoryIndex">
+        </span>
+      </div>
+
+
     </div>
   </section>
 
