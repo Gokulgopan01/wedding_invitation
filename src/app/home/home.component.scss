@@ -2252,3 +2252,40 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     visibility: hidden;
   }
 }
+
+.final-message-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(to bottom, $white, #fff5f5);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .message-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .message-note {
+    font-family: $serif;
+    font-size: 2.2rem;
+    color: $brown;
+    margin: 2.5rem 0;
+    line-height: 1.5;
+    font-weight: 400;
+
+    @media (max-width: 480px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .message-sub {
+    font-family: $cursive;
+    font-size: 3.5rem;
+    color: $gold;
+    margin-top: 1rem;
+    
+    @media (max-width: 480px) {
+      font-size: 2.8rem;
+    }
+  }
+}
