@@ -110,6 +110,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     background: radial-gradient(circle, $light-orb-gold 0%, rgba(255, 215, 0, 0) 70%);
     opacity: 0.6;
     animation: floatOrb 20s infinite alternate ease-in-out;
+    will-change: transform;
 
     &.orb-1 {
       width: 300px;
@@ -150,6 +151,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     background: radial-gradient(circle, $light-gold 0%, rgba(255, 230, 180, 0) 80%);
     opacity: 0.4;
     animation: glowPulse 15s infinite alternate ease-in-out;
+    will-change: transform;
 
     &.glow-1 {
       top: 10%;
@@ -177,6 +179,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     opacity: 0.3;
     transform: rotate(-15deg);
     animation: driftLight 40s infinite linear;
+    will-change: transform;
 
     &.blur-1 {
       top: 25%;
@@ -243,6 +246,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
   pointer-events: none;
   z-index: 10;
   mix-blend-mode: multiply;
+  will-change: transform;
 }
 
 .paper-texture {
@@ -1310,6 +1314,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
     transform: rotate(45deg);
     box-shadow: 0 0 5px rgba($white, 0.2);
     animation: feather-fall 8s linear infinite;
+    will-change: transform;
 
     &::after {
       content: '';
@@ -1780,6 +1785,7 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
       border-radius: 150% 0 150% 0;
       opacity: 0;
       animation: petal-fall linear infinite;
+      will-change: transform;
 
       // 12 petals with varied size, position, timing
       @for $i from 1 through 12 {
