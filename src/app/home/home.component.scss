@@ -2288,4 +2288,113 @@ $light-orb-gold: rgba(255, 215, 0, 0.25);
       font-size: 2.8rem;
     }
   }
+
+  .compliments-label {
+    font-family: $cursive;
+    font-size: 2.5rem;
+    color: $gold;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  .compliments-names {
+    font-family: $serif;
+    font-size: 1.2rem;
+    color: $brown;
+    margin-bottom: 2rem;
+    
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.love-letter-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fffdfa 0%, #fff5f5 100%);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+
+  .letter-content {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .envelope {
+    width: 120px;
+    height: 90px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin: 0 auto 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba($primary-pink, 0.2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-top: 45px solid rgba($primary-pink, 0.1);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .heart-icon {
+      font-size: 2rem;
+      color: $primary-pink;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      z-index: 1;
+    }
+  }
+
+  .prompt-text {
+    font-family: $serif;
+    font-size: 1.5rem;
+    color: $brown;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .action-text {
+    font-family: $cursive;
+    font-size: 2.2rem;
+    color: $primary-pink;
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #fffdfa;
+  border-top: 1px solid rgba($primary-pink, 0.1);
+
+  p {
+    font-family: $sans;
+    font-size: 0.8rem;
+    color: $muted-tan;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
 }

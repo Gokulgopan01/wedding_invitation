@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('scratchCanvas') scratchCanvases!: QueryList<ElementRef<HTMLCanvasElement>>;
 
   activeStoryIndex: number = 0;
-  showSplash: boolean = true;
+  showSplash: boolean = false;
+  showLoveLetter: boolean = true;
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
@@ -91,7 +92,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       // Fallback to hide splash screen after 5 seconds in case Lottie fails
       setTimeout(() => {
         this.showSplash = false;
-      }, 5000);
+      }, 10000);
     }
   }
 
@@ -171,6 +172,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onLottieComplete() {
     this.showSplash = false;
+  }
+
+  onLoveLetterTap() {
+    if (isPlatformBrowser(this.platformId)) {
+      window.dispatchEvent(new CustomEvent('playAudio'));
+    }
+    this.showLoveLetter = false;
+    this.showSplash = true;
   }
 
   calculateCountdown() {

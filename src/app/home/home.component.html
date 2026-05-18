@@ -1,3 +1,13 @@
+<div class="love-letter-screen" *ngIf="showLoveLetter" (click)="onLoveLetterTap()">
+  <div class="letter-content">
+    <div class="envelope">
+      <span class="heart-icon">❤</span>
+    </div>
+    <p class="prompt-text">You have received a Invitation</p>
+    <p class="action-text">Tap to open</p>
+  </div>
+</div>
+
 <div class="splash-screen" *ngIf="showSplash">
   <div class="splash-content">
     <lottie-player src="assets/images/wedding_lottie.json" background="transparent" speed="1"
@@ -136,7 +146,7 @@
       <div class="scratch-card" *ngFor="let i of [0,1,2]" [class.primary]="i === 1">
         <div class="card-info">
           <span class="label">{{ i === 0 ? 'MONTH' : i === 1 ? 'DATE' : 'DAY' }}</span>
-          <span class="value">{{ i === 0 ? 'JULY' : i === 1 ? '12' : 'MONDAY' }}</span>
+          <span class="value">{{ i === 0 ? 'JULY' : i === 1 ? '12' : 'SUNDAY' }}</span>
         </div>
         <div class="card-heart-bottom" *ngIf="i === 1">❤</div>
         <div class="card-leaf-bottom" *ngIf="i !== 1"></div>
@@ -428,7 +438,7 @@
 
         <div class="map-container">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.5684568376173!2d76.99044937449374!3d8.443967197873294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bb469daf6371%3A0x92e31d94f8a3a06b!2sRajasooyam%20Auditorium!5e0!3m2!1sen!2sin!4v1778599391078!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3946.4363875124714!2d76.98963007501222!3d8.456873191583396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMjcnMjQuNyJOIDc2wrA1OSczMS45IkU!5e0!3m2!1sen!2sin!4v1779032954589!5m2!1sen!2sin"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -445,6 +455,12 @@
         </div>
         <p class="message-note">We heartfully invite your presence to bless the couple.</p>
         <p class="message-sub">Thank You</p>
+        <p class="compliments-label">With Compliments</p>
+        <p class="compliments-names">Bavish R S,<br> Lekshmi<br> Gowri</p>
       </div>
     </section>
+
+    <footer class="footer">
+      <p>&#64;2025 gotech solutions</p>
+    </footer>
     <!-- </div> -->

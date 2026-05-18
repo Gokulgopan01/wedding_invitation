@@ -36,6 +36,13 @@ export class AppComponent implements AfterViewInit {
       document.addEventListener('click', unmuteOnInteraction);
       document.addEventListener('touchstart', unmuteOnInteraction);
     });
+
+    window.addEventListener('playAudio', () => {
+      const audio = this.audioPlayer.nativeElement;
+      audio.muted = false;
+      this.isMuted = false;
+      audio.play().catch(e => console.error('Play failed on event:', e));
+    });
   }
 
   toggleMute() {
